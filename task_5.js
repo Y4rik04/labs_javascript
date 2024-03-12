@@ -21,9 +21,12 @@ function getUser(id) {
   
   async function loadUsers(ID) {
     for(let i = 0; i < ID.length; i++) {
-        getUser(i)
-            .then(result => console.log(result))
-            .catch(error => console.error(error));
+      try {
+        const result = await getUser(ID[i]);
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
     }
 }
 
